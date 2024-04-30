@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "carousel_videos",
+  "info": {
+    "singularName": "carousel-video",
+    "pluralName": "carousel-videos",
+    "displayName": "carouselVideo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "promoVideo": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
