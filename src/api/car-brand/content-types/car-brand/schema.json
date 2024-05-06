@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "car_brands",
+  "info": {
+    "singularName": "car-brand",
+    "pluralName": "car-brands",
+    "displayName": "Car Brand",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "brandName": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "vehicles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::vehicle.vehicle",
+      "mappedBy": "car_brand"
+    }
+  }
+}

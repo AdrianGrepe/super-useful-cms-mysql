@@ -937,6 +937,77 @@ export interface ApiBePartOfOurTeamBePartOfOurTeam extends Schema.SingleType {
   };
 }
 
+export interface ApiCarBrandCarBrand extends Schema.CollectionType {
+  collectionName: 'car_brands';
+  info: {
+    singularName: 'car-brand';
+    pluralName: 'car-brands';
+    displayName: 'Car Brand';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    brandName: Attribute.String & Attribute.Required & Attribute.Unique;
+    vehicles: Attribute.Relation<
+      'api::car-brand.car-brand',
+      'oneToMany',
+      'api::vehicle.vehicle'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::car-brand.car-brand',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::car-brand.car-brand',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCarYearCarYear extends Schema.CollectionType {
+  collectionName: 'car_years';
+  info: {
+    singularName: 'car-year';
+    pluralName: 'car-years';
+    displayName: 'Car Year';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    year: Attribute.Integer;
+    car_cover: Attribute.Relation<
+      'api::car-year.car-year',
+      'manyToOne',
+      'api::vehicle.vehicle'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::car-year.car-year',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::car-year.car-year',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCarouselVideoCarouselVideo extends Schema.CollectionType {
   collectionName: 'carousel_videos';
   info: {
@@ -1327,7 +1398,8 @@ export interface ApiVehicleVehicle extends Schema.CollectionType {
   info: {
     singularName: 'vehicle';
     pluralName: 'vehicles';
-    displayName: 'vehicle';
+    displayName: 'Car Cover';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1338,20 +1410,6 @@ export interface ApiVehicleVehicle extends Schema.CollectionType {
     };
   };
   attributes: {
-    brand: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    year: Attribute.Integer &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     model: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -1373,6 +1431,16 @@ export interface ApiVehicleVehicle extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    car_brand: Attribute.Relation<
+      'api::vehicle.vehicle',
+      'manyToOne',
+      'api::car-brand.car-brand'
+    >;
+    car_years: Attribute.Relation<
+      'api::vehicle.vehicle',
+      'oneToMany',
+      'api::car-year.car-year'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1506,6 +1574,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about-us.about-us': ApiAboutUsAboutUs;
       'api::be-part-of-our-team.be-part-of-our-team': ApiBePartOfOurTeamBePartOfOurTeam;
+      'api::car-brand.car-brand': ApiCarBrandCarBrand;
+      'api::car-year.car-year': ApiCarYearCarYear;
       'api::carousel-video.carousel-video': ApiCarouselVideoCarouselVideo;
       'api::faq-store.faq-store': ApiFaqStoreFaqStore;
       'api::faq-wholesale.faq-wholesale': ApiFaqWholesaleFaqWholesale;
