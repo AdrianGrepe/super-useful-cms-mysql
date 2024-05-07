@@ -16,15 +16,6 @@
     }
   },
   "attributes": {
-    "model": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string",
-      "required": true
-    },
     "photo": {
       "type": "media",
       "multiple": true,
@@ -57,6 +48,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::car-year.car-year",
+      "mappedBy": "car_cover"
+    },
+    "car_models": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::car-model.car-model",
       "mappedBy": "car_cover"
     }
   }

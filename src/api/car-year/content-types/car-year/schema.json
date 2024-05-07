@@ -19,6 +19,12 @@
       "relation": "manyToOne",
       "target": "api::vehicle.vehicle",
       "inversedBy": "car_years"
+    },
+    "car_model": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::car-model.car-model",
+      "inversedBy": "car_years"
     }
   }
 }
