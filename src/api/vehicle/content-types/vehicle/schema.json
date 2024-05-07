@@ -38,23 +38,11 @@
       "type": "string",
       "required": true
     },
-    "car_brand": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::car-brand.car-brand",
-      "inversedBy": "vehicles"
-    },
-    "car_years": {
+    "car_models": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::car-year.car-year",
-      "mappedBy": "car_cover"
-    },
-    "car_model": {
-      "type": "relation",
-      "relation": "manyToOne",
       "target": "api::car-model.car-model",
-      "inversedBy": "car_covers"
+      "mappedBy": "car_cover"
     }
   }
 }

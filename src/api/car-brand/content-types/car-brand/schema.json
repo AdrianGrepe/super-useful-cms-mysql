@@ -17,12 +17,6 @@
       "unique": true,
       "required": true
     },
-    "vehicles": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::vehicle.vehicle",
-      "mappedBy": "car_brand"
-    },
     "car_model": {
       "type": "relation",
       "relation": "oneToOne",

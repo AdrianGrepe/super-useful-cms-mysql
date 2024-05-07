@@ -27,11 +27,11 @@
       "target": "api::car-year.car-year",
       "mappedBy": "car_model"
     },
-    "car_covers": {
+    "car_cover": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
       "target": "api::vehicle.vehicle",
-      "mappedBy": "car_model"
+      "inversedBy": "car_models"
     }
   }
 }
