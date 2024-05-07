@@ -1029,12 +1029,12 @@ export interface ApiCarYearCarYear extends Schema.CollectionType {
     singularName: 'car-year';
     pluralName: 'car-years';
     displayName: 'Car Year';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    year: Attribute.Integer;
     car_cover: Attribute.Relation<
       'api::car-year.car-year',
       'manyToOne',
@@ -1045,6 +1045,7 @@ export interface ApiCarYearCarYear extends Schema.CollectionType {
       'manyToOne',
       'api::car-model.car-model'
     >;
+    year: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
