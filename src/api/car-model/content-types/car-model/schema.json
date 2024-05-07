@@ -4,7 +4,8 @@
   "info": {
     "singularName": "car-model",
     "pluralName": "car-models",
-    "displayName": "Car Model"
+    "displayName": "Car Model",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -26,11 +27,11 @@
       "target": "api::car-year.car-year",
       "mappedBy": "car_model"
     },
-    "car_cover": {
+    "car_covers": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToMany",
       "target": "api::vehicle.vehicle",
-      "inversedBy": "car_models"
+      "mappedBy": "car_model"
     }
   }
 }

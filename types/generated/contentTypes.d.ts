@@ -984,6 +984,7 @@ export interface ApiCarModelCarModel extends Schema.CollectionType {
     singularName: 'car-model';
     pluralName: 'car-models';
     displayName: 'Car Model';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1000,9 +1001,9 @@ export interface ApiCarModelCarModel extends Schema.CollectionType {
       'oneToMany',
       'api::car-year.car-year'
     >;
-    car_cover: Attribute.Relation<
+    car_covers: Attribute.Relation<
       'api::car-model.car-model',
-      'manyToOne',
+      'oneToMany',
       'api::vehicle.vehicle'
     >;
     createdAt: Attribute.DateTime;
@@ -1490,9 +1491,9 @@ export interface ApiVehicleVehicle extends Schema.CollectionType {
       'oneToMany',
       'api::car-year.car-year'
     >;
-    car_models: Attribute.Relation<
+    car_model: Attribute.Relation<
       'api::vehicle.vehicle',
-      'oneToMany',
+      'manyToOne',
       'api::car-model.car-model'
     >;
     createdAt: Attribute.DateTime;
