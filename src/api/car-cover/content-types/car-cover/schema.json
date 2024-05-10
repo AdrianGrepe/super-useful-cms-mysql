@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "car_covers",
+  "info": {
+    "singularName": "car-cover",
+    "pluralName": "car-covers",
+    "displayName": "Car Cover"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "internal_denomination": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "car_models": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::car-model.car-model",
+      "mappedBy": "car_cover"
+    }
+  }
+}

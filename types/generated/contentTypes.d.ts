@@ -973,6 +973,43 @@ export interface ApiCarBrandCarBrand extends Schema.CollectionType {
   };
 }
 
+export interface ApiCarCoverCarCover extends Schema.CollectionType {
+  collectionName: 'car_covers';
+  info: {
+    singularName: 'car-cover';
+    pluralName: 'car-covers';
+    displayName: 'Car Cover';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    internal_denomination: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique;
+    car_models: Attribute.Relation<
+      'api::car-cover.car-cover',
+      'oneToMany',
+      'api::car-model.car-model'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::car-cover.car-cover',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::car-cover.car-cover',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCarModelCarModel extends Schema.CollectionType {
   collectionName: 'car_models';
   info: {
@@ -991,12 +1028,12 @@ export interface ApiCarModelCarModel extends Schema.CollectionType {
       'manyToOne',
       'api::car-brand.car-brand'
     >;
+    photo: Attribute.Media;
     car_cover: Attribute.Relation<
       'api::car-model.car-model',
       'manyToOne',
-      'api::vehicle.vehicle'
+      'api::car-cover.car-cover'
     >;
-    photo: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1400,72 +1437,6 @@ export interface ApiTeamTeam extends Schema.CollectionType {
   };
 }
 
-export interface ApiVehicleVehicle extends Schema.CollectionType {
-  collectionName: 'vehicles';
-  info: {
-    singularName: 'vehicle';
-    pluralName: 'vehicles';
-    displayName: 'Car Cover';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    photo: Attribute.Media &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    material: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    car_models: Attribute.Relation<
-      'api::vehicle.vehicle',
-      'oneToMany',
-      'api::car-model.car-model'
-    >;
-    internal_denomination: Attribute.String &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::vehicle.vehicle',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::vehicle.vehicle',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::vehicle.vehicle',
-      'oneToMany',
-      'api::vehicle.vehicle'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 export interface ApiWholesaleWholesale extends Schema.SingleType {
   collectionName: 'wholesales';
   info: {
@@ -1576,6 +1547,7 @@ declare module '@strapi/types' {
       'api::about-us.about-us': ApiAboutUsAboutUs;
       'api::be-part-of-our-team.be-part-of-our-team': ApiBePartOfOurTeamBePartOfOurTeam;
       'api::car-brand.car-brand': ApiCarBrandCarBrand;
+      'api::car-cover.car-cover': ApiCarCoverCarCover;
       'api::car-model.car-model': ApiCarModelCarModel;
       'api::carousel-video.carousel-video': ApiCarouselVideoCarouselVideo;
       'api::faq-store.faq-store': ApiFaqStoreFaqStore;
@@ -1585,7 +1557,6 @@ declare module '@strapi/types' {
       'api::request.request': ApiRequestRequest;
       'api::store.store': ApiStoreStore;
       'api::team.team': ApiTeamTeam;
-      'api::vehicle.vehicle': ApiVehicleVehicle;
       'api::wholesale.wholesale': ApiWholesaleWholesale;
     }
   }

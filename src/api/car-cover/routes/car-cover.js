@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * vehicle router
+ * car-cover router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::vehicle.vehicle');
+module.exports = createCoreRouter('api::car-cover.car-cover');

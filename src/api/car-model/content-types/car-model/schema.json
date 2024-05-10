@@ -22,18 +22,18 @@
       "target": "api::car-brand.car-brand",
       "inversedBy": "car_models"
     },
-    "car_cover": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::vehicle.vehicle",
-      "inversedBy": "car_models"
-    },
     "photo": {
       "allowedTypes": [
         "images"
       ],
       "type": "media",
       "multiple": false
+    },
+    "car_cover": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::car-cover.car-cover",
+      "inversedBy": "car_models"
     }
   }
 }
