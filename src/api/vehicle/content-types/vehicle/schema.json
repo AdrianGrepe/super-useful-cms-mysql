@@ -19,7 +19,7 @@
     "photo": {
       "type": "media",
       "multiple": true,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
@@ -36,13 +36,23 @@
         }
       },
       "type": "string",
-      "required": true
+      "required": false
     },
     "car_models": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::car-model.car-model",
       "mappedBy": "car_cover"
+    },
+    "internal_denomination": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "unique": true,
+      "required": true
     }
   }
 }

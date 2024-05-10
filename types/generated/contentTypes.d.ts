@@ -950,9 +950,9 @@ export interface ApiCarBrandCarBrand extends Schema.CollectionType {
   };
   attributes: {
     brandName: Attribute.String & Attribute.Required & Attribute.Unique;
-    car_model: Attribute.Relation<
+    car_models: Attribute.Relation<
       'api::car-brand.car-brand',
-      'oneToOne',
+      'oneToMany',
       'api::car-model.car-model'
     >;
     createdAt: Attribute.DateTime;
@@ -985,22 +985,18 @@ export interface ApiCarModelCarModel extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    model: Attribute.String;
+    model: Attribute.String & Attribute.Unique;
     car_brand: Attribute.Relation<
       'api::car-model.car-model',
-      'oneToOne',
+      'manyToOne',
       'api::car-brand.car-brand'
-    >;
-    car_years: Attribute.Relation<
-      'api::car-model.car-model',
-      'oneToMany',
-      'api::car-year.car-year'
     >;
     car_cover: Attribute.Relation<
       'api::car-model.car-model',
       'manyToOne',
       'api::vehicle.vehicle'
     >;
+    photo: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1012,42 +1008,6 @@ export interface ApiCarModelCarModel extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::car-model.car-model',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCarYearCarYear extends Schema.CollectionType {
-  collectionName: 'car_years';
-  info: {
-    singularName: 'car-year';
-    pluralName: 'car-years';
-    displayName: 'Car Year';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    car_model: Attribute.Relation<
-      'api::car-year.car-year',
-      'manyToOne',
-      'api::car-model.car-model'
-    >;
-    year: Attribute.String & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::car-year.car-year',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::car-year.car-year',
       'oneToOne',
       'admin::user'
     > &
@@ -1458,14 +1418,12 @@ export interface ApiVehicleVehicle extends Schema.CollectionType {
   };
   attributes: {
     photo: Attribute.Media &
-      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
     material: Attribute.String &
-      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1476,6 +1434,14 @@ export interface ApiVehicleVehicle extends Schema.CollectionType {
       'oneToMany',
       'api::car-model.car-model'
     >;
+    internal_denomination: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1611,7 +1577,6 @@ declare module '@strapi/types' {
       'api::be-part-of-our-team.be-part-of-our-team': ApiBePartOfOurTeamBePartOfOurTeam;
       'api::car-brand.car-brand': ApiCarBrandCarBrand;
       'api::car-model.car-model': ApiCarModelCarModel;
-      'api::car-year.car-year': ApiCarYearCarYear;
       'api::carousel-video.carousel-video': ApiCarouselVideoCarouselVideo;
       'api::faq-store.faq-store': ApiFaqStoreFaqStore;
       'api::faq-wholesale.faq-wholesale': ApiFaqWholesaleFaqWholesale;

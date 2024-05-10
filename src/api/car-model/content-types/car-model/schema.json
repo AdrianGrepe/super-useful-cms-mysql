@@ -13,25 +13,27 @@
   "pluginOptions": {},
   "attributes": {
     "model": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "car_brand": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::car-brand.car-brand",
-      "inversedBy": "car_model"
-    },
-    "car_years": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::car-year.car-year",
-      "mappedBy": "car_model"
+      "inversedBy": "car_models"
     },
     "car_cover": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::vehicle.vehicle",
       "inversedBy": "car_models"
+    },
+    "photo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
