@@ -979,6 +979,7 @@ export interface ApiCarCoverCarCover extends Schema.CollectionType {
     singularName: 'car-cover';
     pluralName: 'car-covers';
     displayName: 'Car Cover';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -992,6 +993,8 @@ export interface ApiCarCoverCarCover extends Schema.CollectionType {
       'oneToMany',
       'api::car-model.car-model'
     >;
+    mercadolibre_link: Attribute.String & Attribute.Unique;
+    amazon_link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
