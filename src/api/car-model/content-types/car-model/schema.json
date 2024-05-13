@@ -23,11 +23,12 @@
       "inversedBy": "car_models"
     },
     "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "car_cover": {
       "type": "relation",
