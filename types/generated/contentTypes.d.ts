@@ -995,6 +995,10 @@ export interface ApiCarCoverCarCover extends Schema.CollectionType {
     >;
     mercadolibre_link: Attribute.String & Attribute.Unique;
     amazon_link: Attribute.String;
+    coppel_link: Attribute.String;
+    walmart_link: Attribute.String;
+    shein_link: Attribute.String;
+    temu_link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
