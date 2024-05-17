@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "total_sales",
+  "info": {
+    "singularName": "total-sale",
+    "pluralName": "total-sales",
+    "displayName": "Total sale"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sales": {
+      "type": "string"
+    }
+  }
+}

@@ -1440,6 +1440,89 @@ export interface ApiTeamTeam extends Schema.CollectionType {
   };
 }
 
+export interface ApiTermsAndConditionTermsAndCondition
+  extends Schema.SingleType {
+  collectionName: 'terms_and_conditions';
+  info: {
+    singularName: 'terms-and-condition';
+    pluralName: 'terms-and-conditions';
+    displayName: 'Terms & Condition';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    text: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::terms-and-condition.terms-and-condition',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::terms-and-condition.terms-and-condition',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::terms-and-condition.terms-and-condition',
+      'oneToMany',
+      'api::terms-and-condition.terms-and-condition'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiTotalSaleTotalSale extends Schema.SingleType {
+  collectionName: 'total_sales';
+  info: {
+    singularName: 'total-sale';
+    pluralName: 'total-sales';
+    displayName: 'Total sale';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    sales: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::total-sale.total-sale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::total-sale.total-sale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiWholesaleWholesale extends Schema.SingleType {
   collectionName: 'wholesales';
   info: {
@@ -1560,6 +1643,8 @@ declare module '@strapi/types' {
       'api::request.request': ApiRequestRequest;
       'api::store.store': ApiStoreStore;
       'api::team.team': ApiTeamTeam;
+      'api::terms-and-condition.terms-and-condition': ApiTermsAndConditionTermsAndCondition;
+      'api::total-sale.total-sale': ApiTotalSaleTotalSale;
       'api::wholesale.wholesale': ApiWholesaleWholesale;
     }
   }
