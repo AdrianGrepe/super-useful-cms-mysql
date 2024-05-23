@@ -41,6 +41,15 @@
     },
     "temu_link": {
       "type": "string"
+    },
+    "cover_materials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cover-material.cover-material",
+      "mappedBy": "car_cover"
+    },
+    "price": {
+      "type": "float"
     }
   }
 }

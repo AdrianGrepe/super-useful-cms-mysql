@@ -999,6 +999,12 @@ export interface ApiCarCoverCarCover extends Schema.CollectionType {
     walmart_link: Attribute.String;
     shein_link: Attribute.String;
     temu_link: Attribute.String;
+    cover_materials: Attribute.Relation<
+      'api::car-cover.car-cover',
+      'oneToMany',
+      'api::cover-material.cover-material'
+    >;
+    price: Attribute.Float;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1082,6 +1088,41 @@ export interface ApiCarouselVideoCarouselVideo extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::carousel-video.carousel-video',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCoverMaterialCoverMaterial extends Schema.CollectionType {
+  collectionName: 'cover_materials';
+  info: {
+    singularName: 'cover-material';
+    pluralName: 'cover-materials';
+    displayName: 'Cover Material';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    material: Attribute.String;
+    car_cover: Attribute.Relation<
+      'api::cover-material.cover-material',
+      'manyToOne',
+      'api::car-cover.car-cover'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::cover-material.cover-material',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::cover-material.cover-material',
       'oneToOne',
       'admin::user'
     > &
@@ -1640,6 +1681,7 @@ declare module '@strapi/types' {
       'api::car-cover.car-cover': ApiCarCoverCarCover;
       'api::car-model.car-model': ApiCarModelCarModel;
       'api::carousel-video.carousel-video': ApiCarouselVideoCarouselVideo;
+      'api::cover-material.cover-material': ApiCoverMaterialCoverMaterial;
       'api::faq-store.faq-store': ApiFaqStoreFaqStore;
       'api::faq-wholesale.faq-wholesale': ApiFaqWholesaleFaqWholesale;
       'api::feedback.feedback': ApiFeedbackFeedback;
