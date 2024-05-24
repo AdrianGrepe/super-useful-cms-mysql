@@ -52,9 +52,9 @@
       "relation": "oneToMany",
       "target": "api::covers-price.covers-price"
     },
-    "covers_price": {
+    "prices": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::covers-price.covers-price",
       "inversedBy": "car_covers"
     }

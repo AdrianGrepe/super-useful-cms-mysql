@@ -25,9 +25,9 @@
     },
     "car_covers": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::car-cover.car-cover",
-      "mappedBy": "covers_price"
+      "mappedBy": "prices"
     }
   }
 }

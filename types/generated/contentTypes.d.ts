@@ -1009,9 +1009,9 @@ export interface ApiCarCoverCarCover extends Schema.CollectionType {
       'oneToMany',
       'api::covers-price.covers-price'
     >;
-    covers_price: Attribute.Relation<
+    prices: Attribute.Relation<
       'api::car-cover.car-cover',
-      'manyToOne',
+      'manyToMany',
       'api::covers-price.covers-price'
     >;
     createdAt: Attribute.DateTime;
@@ -1160,7 +1160,7 @@ export interface ApiCoversPriceCoversPrice extends Schema.CollectionType {
     >;
     car_covers: Attribute.Relation<
       'api::covers-price.covers-price',
-      'oneToMany',
+      'manyToMany',
       'api::car-cover.car-cover'
     >;
     createdAt: Attribute.DateTime;
