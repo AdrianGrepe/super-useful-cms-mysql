@@ -15,11 +15,11 @@
     "material": {
       "type": "string"
     },
-    "covers_prices": {
+    "covers_price": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
       "target": "api::covers-price.covers-price",
-      "mappedBy": "cover_material"
+      "inversedBy": "cover_materials"
     }
   }
 }

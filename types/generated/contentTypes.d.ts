@@ -1009,6 +1009,11 @@ export interface ApiCarCoverCarCover extends Schema.CollectionType {
       'oneToMany',
       'api::covers-price.covers-price'
     >;
+    covers_price: Attribute.Relation<
+      'api::car-cover.car-cover',
+      'manyToOne',
+      'api::covers-price.covers-price'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1112,9 +1117,9 @@ export interface ApiCoverMaterialCoverMaterial extends Schema.CollectionType {
   };
   attributes: {
     material: Attribute.String;
-    covers_prices: Attribute.Relation<
+    covers_price: Attribute.Relation<
       'api::cover-material.cover-material',
-      'oneToMany',
+      'manyToOne',
       'api::covers-price.covers-price'
     >;
     createdAt: Attribute.DateTime;
@@ -1141,16 +1146,22 @@ export interface ApiCoversPriceCoversPrice extends Schema.CollectionType {
     singularName: 'covers-price';
     pluralName: 'covers-prices';
     displayName: 'Covers Price';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     price: Attribute.Float & Attribute.Required & Attribute.Unique;
-    cover_material: Attribute.Relation<
+    cover_materials: Attribute.Relation<
       'api::covers-price.covers-price',
-      'manyToOne',
+      'oneToMany',
       'api::cover-material.cover-material'
+    >;
+    car_covers: Attribute.Relation<
+      'api::covers-price.covers-price',
+      'oneToMany',
+      'api::car-cover.car-cover'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

@@ -51,6 +51,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::covers-price.covers-price"
+    },
+    "covers_price": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::covers-price.covers-price",
+      "inversedBy": "car_covers"
     }
   }
 }

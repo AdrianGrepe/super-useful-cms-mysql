@@ -4,7 +4,8 @@
   "info": {
     "singularName": "covers-price",
     "pluralName": "covers-prices",
-    "displayName": "Covers Price"
+    "displayName": "Covers Price",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,11 +17,17 @@
       "unique": true,
       "required": true
     },
-    "cover_material": {
+    "cover_materials": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToMany",
       "target": "api::cover-material.cover-material",
-      "inversedBy": "covers_prices"
+      "mappedBy": "covers_price"
+    },
+    "car_covers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::car-cover.car-cover",
+      "mappedBy": "covers_price"
     }
   }
 }
