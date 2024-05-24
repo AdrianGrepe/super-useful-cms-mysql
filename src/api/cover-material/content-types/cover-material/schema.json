@@ -4,7 +4,8 @@
   "info": {
     "singularName": "cover-material",
     "pluralName": "cover-materials",
-    "displayName": "Cover Material"
+    "displayName": "Cover Material",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,11 @@
   "attributes": {
     "material": {
       "type": "string"
+    },
+    "covers_prices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::covers-price.covers-price"
     }
   }
 }

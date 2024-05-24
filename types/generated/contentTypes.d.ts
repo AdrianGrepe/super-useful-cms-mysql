@@ -1105,12 +1105,18 @@ export interface ApiCoverMaterialCoverMaterial extends Schema.CollectionType {
     singularName: 'cover-material';
     pluralName: 'cover-materials';
     displayName: 'Cover Material';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     material: Attribute.String;
+    covers_prices: Attribute.Relation<
+      'api::cover-material.cover-material',
+      'oneToMany',
+      'api::covers-price.covers-price'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
