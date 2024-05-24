@@ -1147,6 +1147,11 @@ export interface ApiCoversPriceCoversPrice extends Schema.CollectionType {
   };
   attributes: {
     price: Attribute.Float & Attribute.Required & Attribute.Unique;
+    cover_material: Attribute.Relation<
+      'api::covers-price.covers-price',
+      'manyToOne',
+      'api::cover-material.cover-material'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

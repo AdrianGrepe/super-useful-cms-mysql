@@ -15,6 +15,12 @@
       "type": "float",
       "unique": true,
       "required": true
+    },
+    "cover_material": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::cover-material.cover-material",
+      "inversedBy": "covers_prices"
     }
   }
 }

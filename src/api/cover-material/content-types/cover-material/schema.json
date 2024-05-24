@@ -18,7 +18,8 @@
     "covers_prices": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::covers-price.covers-price"
+      "target": "api::covers-price.covers-price",
+      "mappedBy": "cover_material"
     }
   }
 }
