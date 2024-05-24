@@ -15,9 +15,9 @@
     "material": {
       "type": "string"
     },
-    "covers_price": {
+    "covers_prices": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::covers-price.covers-price",
       "inversedBy": "cover_materials"
     }
