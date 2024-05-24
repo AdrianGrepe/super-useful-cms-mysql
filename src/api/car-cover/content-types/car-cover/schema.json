@@ -45,11 +45,12 @@
     "cover_materials": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::cover-material.cover-material",
-      "mappedBy": "car_cover"
+      "target": "api::cover-material.cover-material"
     },
-    "price": {
-      "type": "float"
+    "covers_prices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::covers-price.covers-price"
     }
   }
 }

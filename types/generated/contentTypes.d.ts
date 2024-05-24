@@ -1004,7 +1004,11 @@ export interface ApiCarCoverCarCover extends Schema.CollectionType {
       'oneToMany',
       'api::cover-material.cover-material'
     >;
-    price: Attribute.Float;
+    covers_prices: Attribute.Relation<
+      'api::car-cover.car-cover',
+      'oneToMany',
+      'api::covers-price.covers-price'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1107,11 +1111,6 @@ export interface ApiCoverMaterialCoverMaterial extends Schema.CollectionType {
   };
   attributes: {
     material: Attribute.String;
-    car_cover: Attribute.Relation<
-      'api::cover-material.cover-material',
-      'manyToOne',
-      'api::car-cover.car-cover'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1123,6 +1122,36 @@ export interface ApiCoverMaterialCoverMaterial extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::cover-material.cover-material',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCoversPriceCoversPrice extends Schema.CollectionType {
+  collectionName: 'covers_prices';
+  info: {
+    singularName: 'covers-price';
+    pluralName: 'covers-prices';
+    displayName: 'Covers Price';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    price: Attribute.Float & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::covers-price.covers-price',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::covers-price.covers-price',
       'oneToOne',
       'admin::user'
     > &
@@ -1682,6 +1711,7 @@ declare module '@strapi/types' {
       'api::car-model.car-model': ApiCarModelCarModel;
       'api::carousel-video.carousel-video': ApiCarouselVideoCarouselVideo;
       'api::cover-material.cover-material': ApiCoverMaterialCoverMaterial;
+      'api::covers-price.covers-price': ApiCoversPriceCoversPrice;
       'api::faq-store.faq-store': ApiFaqStoreFaqStore;
       'api::faq-wholesale.faq-wholesale': ApiFaqWholesaleFaqWholesale;
       'api::feedback.feedback': ApiFeedbackFeedback;

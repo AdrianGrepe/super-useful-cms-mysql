@@ -13,12 +13,6 @@
   "attributes": {
     "material": {
       "type": "string"
-    },
-    "car_cover": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::car-cover.car-cover",
-      "inversedBy": "cover_materials"
     }
   }
 }

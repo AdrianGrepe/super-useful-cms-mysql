@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "covers_prices",
+  "info": {
+    "singularName": "covers-price",
+    "pluralName": "covers-prices",
+    "displayName": "Covers Price"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "price": {
+      "type": "float",
+      "unique": true,
+      "required": true
+    }
+  }
+}
