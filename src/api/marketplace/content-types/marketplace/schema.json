@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "marketplaces",
+  "info": {
+    "singularName": "marketplace",
+    "pluralName": "marketplaces",
+    "displayName": "Marketplace"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "marketplace_url": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::marketplace-url.marketplace-url",
+      "mappedBy": "marketplace"
+    }
+  }
+}

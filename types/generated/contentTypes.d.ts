@@ -1056,6 +1056,11 @@ export interface ApiCarModelCarModel extends Schema.CollectionType {
       'manyToOne',
       'api::car-cover.car-cover'
     >;
+    marketplace_urls: Attribute.Relation<
+      'api::car-model.car-model',
+      'oneToMany',
+      'api::marketplace-url.marketplace-url'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1121,6 +1126,11 @@ export interface ApiCoverMaterialCoverMaterial extends Schema.CollectionType {
       'api::cover-material.cover-material',
       'manyToMany',
       'api::covers-price.covers-price'
+    >;
+    marketplace_url: Attribute.Relation<
+      'api::cover-material.cover-material',
+      'oneToOne',
+      'api::marketplace-url.marketplace-url'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1393,6 +1403,87 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
       'api::homepage.homepage'
     >;
     locale: Attribute.String;
+  };
+}
+
+export interface ApiMarketplaceMarketplace extends Schema.CollectionType {
+  collectionName: 'marketplaces';
+  info: {
+    singularName: 'marketplace';
+    pluralName: 'marketplaces';
+    displayName: 'Marketplace';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    marketplace_url: Attribute.Relation<
+      'api::marketplace.marketplace',
+      'oneToOne',
+      'api::marketplace-url.marketplace-url'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::marketplace.marketplace',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::marketplace.marketplace',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMarketplaceUrlMarketplaceUrl extends Schema.CollectionType {
+  collectionName: 'marketplace_urls';
+  info: {
+    singularName: 'marketplace-url';
+    pluralName: 'marketplace-urls';
+    displayName: 'Marketplace URL';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    url: Attribute.String & Attribute.Required & Attribute.Unique;
+    marketplace: Attribute.Relation<
+      'api::marketplace-url.marketplace-url',
+      'oneToOne',
+      'api::marketplace.marketplace'
+    >;
+    cover_material: Attribute.Relation<
+      'api::marketplace-url.marketplace-url',
+      'oneToOne',
+      'api::cover-material.cover-material'
+    >;
+    car_model: Attribute.Relation<
+      'api::marketplace-url.marketplace-url',
+      'manyToOne',
+      'api::car-model.car-model'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::marketplace-url.marketplace-url',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::marketplace-url.marketplace-url',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1738,6 +1829,8 @@ declare module '@strapi/types' {
       'api::faq-wholesale.faq-wholesale': ApiFaqWholesaleFaqWholesale;
       'api::feedback.feedback': ApiFeedbackFeedback;
       'api::homepage.homepage': ApiHomepageHomepage;
+      'api::marketplace.marketplace': ApiMarketplaceMarketplace;
+      'api::marketplace-url.marketplace-url': ApiMarketplaceUrlMarketplaceUrl;
       'api::request.request': ApiRequestRequest;
       'api::store.store': ApiStoreStore;
       'api::team.team': ApiTeamTeam;

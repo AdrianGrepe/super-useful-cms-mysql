@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "marketplace_urls",
+  "info": {
+    "singularName": "marketplace-url",
+    "pluralName": "marketplace-urls",
+    "displayName": "Marketplace URL",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "marketplace": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::marketplace.marketplace",
+      "inversedBy": "marketplace_url"
+    },
+    "cover_material": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cover-material.cover-material",
+      "inversedBy": "marketplace_url"
+    },
+    "car_model": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::car-model.car-model",
+      "inversedBy": "marketplace_urls"
+    }
+  }
+}

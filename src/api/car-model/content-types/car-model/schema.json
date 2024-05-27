@@ -35,6 +35,12 @@
       "relation": "manyToOne",
       "target": "api::car-cover.car-cover",
       "inversedBy": "car_models"
+    },
+    "marketplace_urls": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::marketplace-url.marketplace-url",
+      "mappedBy": "car_model"
     }
   }
 }
