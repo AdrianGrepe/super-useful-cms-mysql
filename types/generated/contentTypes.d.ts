@@ -1127,9 +1127,9 @@ export interface ApiCoverMaterialCoverMaterial extends Schema.CollectionType {
       'manyToMany',
       'api::covers-price.covers-price'
     >;
-    marketplace_url: Attribute.Relation<
+    marketplace_urls: Attribute.Relation<
       'api::cover-material.cover-material',
-      'oneToOne',
+      'oneToMany',
       'api::marketplace-url.marketplace-url'
     >;
     createdAt: Attribute.DateTime;
@@ -1418,9 +1418,9 @@ export interface ApiMarketplaceMarketplace extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
-    marketplace_url: Attribute.Relation<
+    marketplace_urls: Attribute.Relation<
       'api::marketplace.marketplace',
-      'oneToOne',
+      'oneToMany',
       'api::marketplace-url.marketplace-url'
     >;
     createdAt: Attribute.DateTime;
@@ -1456,12 +1456,12 @@ export interface ApiMarketplaceUrlMarketplaceUrl extends Schema.CollectionType {
     url: Attribute.String & Attribute.Required & Attribute.Unique;
     marketplace: Attribute.Relation<
       'api::marketplace-url.marketplace-url',
-      'oneToOne',
+      'manyToOne',
       'api::marketplace.marketplace'
     >;
     cover_material: Attribute.Relation<
       'api::marketplace-url.marketplace-url',
-      'oneToOne',
+      'manyToOne',
       'api::cover-material.cover-material'
     >;
     car_model: Attribute.Relation<

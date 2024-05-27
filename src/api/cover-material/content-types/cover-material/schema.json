@@ -21,9 +21,9 @@
       "target": "api::covers-price.covers-price",
       "inversedBy": "cover_materials"
     },
-    "marketplace_url": {
+    "marketplace_urls": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::marketplace-url.marketplace-url",
       "mappedBy": "cover_material"
     }

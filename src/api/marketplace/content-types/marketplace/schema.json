@@ -16,9 +16,9 @@
       "required": true,
       "unique": true
     },
-    "marketplace_url": {
+    "marketplace_urls": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::marketplace-url.marketplace-url",
       "mappedBy": "marketplace"
     }

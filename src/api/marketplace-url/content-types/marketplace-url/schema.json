@@ -19,15 +19,15 @@
     },
     "marketplace": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::marketplace.marketplace",
-      "inversedBy": "marketplace_url"
+      "inversedBy": "marketplace_urls"
     },
     "cover_material": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::cover-material.cover-material",
-      "inversedBy": "marketplace_url"
+      "inversedBy": "marketplace_urls"
     },
     "car_model": {
       "type": "relation",
