@@ -1453,7 +1453,7 @@ export interface ApiMarketplaceUrlMarketplaceUrl extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    url: Attribute.String & Attribute.Required & Attribute.Unique;
+    url: Attribute.String & Attribute.Required;
     marketplace: Attribute.Relation<
       'api::marketplace-url.marketplace-url',
       'manyToOne',
