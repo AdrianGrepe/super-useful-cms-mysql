@@ -993,12 +993,6 @@ export interface ApiCarCoverCarCover extends Schema.CollectionType {
       'oneToMany',
       'api::car-model.car-model'
     >;
-    mercadolibre_link: Attribute.String & Attribute.Unique;
-    amazon_link: Attribute.String;
-    coppel_link: Attribute.String;
-    walmart_link: Attribute.String;
-    shein_link: Attribute.String;
-    temu_link: Attribute.String;
     cover_materials: Attribute.Relation<
       'api::car-cover.car-cover',
       'oneToMany',
@@ -1014,6 +1008,7 @@ export interface ApiCarCoverCarCover extends Schema.CollectionType {
       'manyToMany',
       'api::covers-price.covers-price'
     >;
+    measures: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1132,6 +1127,7 @@ export interface ApiCoverMaterialCoverMaterial extends Schema.CollectionType {
       'oneToMany',
       'api::marketplace-url.marketplace-url'
     >;
+    description: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

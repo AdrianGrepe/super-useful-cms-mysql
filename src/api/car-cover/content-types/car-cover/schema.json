@@ -23,25 +23,6 @@
       "target": "api::car-model.car-model",
       "mappedBy": "car_cover"
     },
-    "mercadolibre_link": {
-      "type": "string",
-      "unique": true
-    },
-    "amazon_link": {
-      "type": "string"
-    },
-    "coppel_link": {
-      "type": "string"
-    },
-    "walmart_link": {
-      "type": "string"
-    },
-    "shein_link": {
-      "type": "string"
-    },
-    "temu_link": {
-      "type": "string"
-    },
     "cover_materials": {
       "type": "relation",
       "relation": "oneToMany",
@@ -57,6 +38,9 @@
       "relation": "manyToMany",
       "target": "api::covers-price.covers-price",
       "inversedBy": "car_covers"
+    },
+    "measures": {
+      "type": "string"
     }
   }
 }

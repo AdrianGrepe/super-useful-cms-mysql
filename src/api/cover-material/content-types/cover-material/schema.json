@@ -26,6 +26,9 @@
       "relation": "oneToMany",
       "target": "api::marketplace-url.marketplace-url",
       "mappedBy": "cover_material"
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }
