@@ -23,8 +23,8 @@ module.exports = ({env}) => ({
                 apiKey: env('SENDGRID_API_KEY'),
             },
             settings: {
-                defaultFrom: 'noreply@resquivel.com',
-                defaultReplyTo: 'noreply@resquivel.com',
+                defaultFrom: 'contacto@superutil.mx',
+                defaultReplyTo: 'contacto@superutil.mx',
             },
         },
     },
